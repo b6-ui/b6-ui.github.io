@@ -137,7 +137,7 @@
                 <!-- Avatar / Image Area -->
                 <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden mb-6 border border-jsblue-500/40 neon-glow">
                     <!-- High-tech Portrait representation -->
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" 
+                    <img src="https://i.postimg.cc/25vwK3v0/gongseon-u-peulopil.jpg" 
                          alt="공선우 부사장" 
                          class="w-full h-full object-cover object-top filter grayscale contrast-125 hover:grayscale-0 transition-all duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-jsdark-950 via-transparent to-transparent opacity-80"></div>
@@ -165,12 +165,12 @@
                 <!-- Quick Metrics -->
                 <div class="grid grid-cols-2 gap-3 pt-4 border-t border-jsblue-500/20">
                     <div class="bg-jsdark-800/80 p-3 rounded-xl border border-jsblue-500/10 text-center">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-wider">Approval Rate</p>
-                        <p class="text-lg font-bold text-white mono-font mt-0.5">99.4%</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider">Executive Rank</p>
+                        <p class="text-lg font-bold text-white mono-font mt-0.5">VICE PRESIDENT</p>
                     </div>
                     <div class="bg-jsdark-800/80 p-3 rounded-xl border border-jsblue-500/10 text-center">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-wider">Clearance Index</p>
-                        <p class="text-lg font-bold text-jsblue-neon mono-font mt-0.5">Ω-9</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider">Corporate Tenure</p>
+                        <p class="text-lg font-bold text-jsblue-neon mono-font mt-0.5">09 YRS</p>
                     </div>
                 </div>
             </div>
@@ -239,8 +239,8 @@
                             <p class="text-jsblue-400 font-semibold text-base">JS그룹 총괄 부사장 / 미래전략실</p>
                         </div>
                         <div class="bg-jsdark-800/60 p-4 rounded-xl border border-jsblue-500/10">
-                            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">출생 및 연령</span>
-                            <p class="text-white font-semibold text-base">1988년생 (38세)</p>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">연령</span>
+                            <p class="text-white font-semibold text-base">31세</p>
                         </div>
                         <div class="bg-jsdark-800/60 p-4 rounded-xl border border-jsblue-500/10">
                             <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">학력 사항</span>
@@ -414,33 +414,141 @@
 
                     <div id="secret-lock-screen" class="p-8 text-center bg-jsdark-950/60 rounded-xl border border-rose-500/20 flex flex-col items-center justify-center space-y-4">
                         <div class="w-16 h-16 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 text-2xl border border-rose-500/30 neon-glow">
-                            <i class="fa-solid fa-fingerprint"></i>
+                            <i class="fa-solid fa-lock"></i>
                         </div>
                         <div>
-                            <h4 class="text-white font-bold mb-1">생체 인증 및 보안 패스코드 필요</h4>
-                            <p class="text-xs text-slate-400">공선우 부사장의 숨겨진 개인사 및 비공식 프로젝트 파일을 해제하려면 인증을 진행하세요.</p>
+                            <h4 class="text-white font-bold mb-1">보안 패스코드 필요</h4>
+                            <p class="text-xs text-slate-400">공선우 부사장의 숨겨진 개인사 및 비공식 프로젝트 파일을 해제하려면 패스코드를 입력하세요.</p>
                         </div>
-                        <button onclick="unlockSecret()" class="px-6 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs tracking-wider transition-all duration-300 shadow-lg shadow-rose-600/30 flex items-center gap-2">
-                            <i class="fa-solid fa-unlock-keyhole"></i> 시크릿 데이터 잠금 해제
-                        </button>
+                        <div class="w-full max-w-xs">
+                            <input
+                                id="secret-password"
+                                type="password"
+                                inputmode="numeric"
+                                maxlength="4"
+                                autocomplete="off"
+                                placeholder="••••"
+                                onkeydown="if(event.key === 'Enter') unlockSecret()"
+                                class="w-full bg-jsdark-900 border border-slate-700 focus:border-rose-500/70 rounded-lg py-3 px-4 text-center text-white tracking-[0.6em] outline-none transition-all placeholder:text-slate-700 placeholder:tracking-normal"
+                            >
+                            <button onclick="unlockSecret()" class="w-full mt-3 px-6 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs tracking-wider transition-all duration-300 shadow-lg shadow-rose-600/30 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-unlock-keyhole"></i> 보안 인증
+                            </button>
+                            <p id="secret-error" class="hidden text-rose-400 text-[11px] font-mono mt-3 animate-pulse">
+                                [ACCESS DENIED] 패스코드가 일치하지 않습니다.
+                            </p>
+                        </div>
                     </div>
 
                     <div id="secret-content-screen" class="hidden space-y-4">
-                        <div class="bg-rose-950/20 p-4 rounded-xl border border-rose-500/30">
-                            <span class="text-xs text-rose-400 font-bold uppercase tracking-wider block mb-1">비공식 프로젝트: '코드네임 헤르메스'</span>
+                        <!-- Core Secret -->
+                        <div class="bg-rose-950/20 p-5 rounded-xl border border-rose-500/30">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-rose-400 font-bold uppercase tracking-wider">SUBJECT: KONG SUN-WOO</span>
+                                <span class="text-[10px] text-rose-400 font-mono">FILE 00-31-KSW</span>
+                            </div>
+                            <h4 class="text-white font-bold text-base mb-2">비공식 인물 분석 보고서</h4>
                             <p class="text-xs text-slate-300 leading-relaxed">
-                                JS그룹의 표면적 사업 이면에서 공선우 부사장이 단독으로 추진 중인 글로벌 암호화 통신망 및 AI 자율주행 물류망 프로젝트. 이사회 일부 임원조차 실체를 모르는 극비 사안.
+                                표면상으로는 냉철하고 완벽한 경영자. 그러나 주인공을 인식한 이후, 통제와 독점에 대한 욕구가 명확하게 드러나기 시작함. 이 기록은 공식 인사자료에 포함되지 않은 개인적 성향 및 관계 데이터를 취급한다.
                             </p>
                         </div>
 
+                        <!-- Family / Origin -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-jsdark-800/60 p-4 rounded-xl border border-jsblue-500/10">
+                                <span class="text-xs text-rose-400 font-bold uppercase tracking-wider block mb-2">FAMILY RECORD</span>
+                                <p class="text-xs text-slate-300 leading-relaxed">
+                                    러시아인 어머니 <span class="text-white font-semibold">나탈리야 (61세)</span>와 한국인 아버지 <span class="text-white font-semibold">공대만 (60세)</span> 사이에서 태어난 외동아들. 0.01% 재벌가의 유일한 자손으로 성장했으며, 어린 시절부터 경제적 결핍을 경험하지 않음.
+                                </p>
+                            </div>
+
+                            <div class="bg-jsdark-800/60 p-4 rounded-xl border border-jsblue-500/10">
+                                <span class="text-xs text-rose-400 font-bold uppercase tracking-wider block mb-2">EARLY RECORD</span>
+                                <p class="text-xs text-slate-300 leading-relaxed">
+                                    초등학생 시절부터 높은 학업 능력과 과학적 재능을 보임. 중·고등학교에서도 전교권 성적을 유지했으며, 타인의 수준이 자신의 기준에 미치지 못한다고 판단할 경우 직접적인 충돌보다 서서히 상대를 통제하는 방식을 선택하는 경향이 확인됨.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Hidden traits -->
                         <div class="bg-jsdark-800/60 p-4 rounded-xl border border-jsblue-500/10">
-                            <span class="text-xs text-jsblue-400 font-bold uppercase tracking-wider block mb-1">개인 성향 및 집무실 비밀</span>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs text-jsblue-400 font-bold uppercase tracking-wider">BEHAVIORAL PROFILE</span>
+                                <span class="text-[10px] text-slate-500 font-mono">RESTRICTED ANALYSIS</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="bg-jsdark-950/60 p-3 rounded-lg border border-slate-700/50">
+                                    <p class="text-xs font-bold text-white mb-1">통제 성향</p>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">자신이 원하는 결과를 얻기 위해 상대의 선택지를 서서히 좁히는 방식. 노골적인 강압보다 상대가 스스로 선택했다고 느끼게 만드는 방식을 선호.</p>
+                                </div>
+                                <div class="bg-jsdark-950/60 p-3 rounded-lg border border-slate-700/50">
+                                    <p class="text-xs font-bold text-white mb-1">대외적 태도</p>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">항상 예의를 갖춘 존댓말을 사용. 원하는 것을 얻기 시작하면 말투를 부드럽게 낮춰 상대의 경계심을 무너뜨리는 경향.</p>
+                                </div>
+                                <div class="bg-jsdark-950/60 p-3 rounded-lg border border-slate-700/50">
+                                    <p class="text-xs font-bold text-white mb-1">완벽주의</p>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">스스로를 몰아붙일 정도로 완벽을 추구하지만, 본인은 스트레스를 크게 받지 않는 성격이라고 인식함.</p>
+                                </div>
+                                <div class="bg-jsdark-950/60 p-3 rounded-lg border border-slate-700/50">
+                                    <p class="text-xs font-bold text-white mb-1">숨겨진 예외</p>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">평소의 이성적 판단과 달리 주인공과 관련된 상황에서는 감정적으로 흔들릴 가능성이 가장 높음.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Protagonist relation -->
+                        <div class="bg-rose-950/20 p-5 rounded-xl border border-rose-500/30">
+                            <div class="flex items-center justify-between mb-3">
+                                <div>
+                                    <span class="text-xs text-rose-400 font-bold uppercase tracking-wider block">RELATION: PROTAGONIST</span>
+                                    <h4 class="text-white font-bold mt-1">후원자 → 독점적 관계</h4>
+                                </div>
+                                <i class="fa-solid fa-link text-rose-400"></i>
+                            </div>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                                오랜 무명 시기를 보내던 주인공을 무대에서 발견한 뒤 관심을 갖기 시작함. 이후 회사 업무를 마친 뒤에도 주인공이 서는 무대를 지속적으로 찾아가며 관찰. 결국 자신의 재력을 이용해 후원 계약을 제안함.
+                            </p>
+                            <div class="bg-jsdark-950/60 rounded-lg p-3 border border-rose-500/15">
+                                <p class="text-[11px] text-rose-300 font-semibold mb-1">[WARNING: INTENT DISCREPANCY]</p>
+                                <p class="text-[11px] text-slate-400 leading-relaxed">
+                                    계약 조건상 공선우가 감수하는 손해가 더 큰 것으로 보이나, 실질적인 목적은 주인공을 자신의 영향력 안에 두기 위한 장치일 가능성이 있음. 주인공의 일상과 인간관계까지 파악하려는 욕구가 존재함.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Trigger / Conflict -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-jsdark-800/60 p-4 rounded-xl border border-amber-500/20">
+                                <span class="text-xs text-amber-400 font-bold uppercase tracking-wider block mb-2">PRIMARY TRIGGER</span>
+                                <p class="text-sm font-bold text-white mb-2">주인공의 이탈 가능성</p>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    주인공이 도망치거나 자신의 시야에서 완전히 사라지려는 행동을 보일 경우, 평소의 이성적 통제가 무너질 가능성이 있음.
+                                </p>
+                            </div>
+
+                            <div class="bg-jsdark-800/60 p-4 rounded-xl border border-rose-500/20">
+                                <span class="text-xs text-rose-400 font-bold uppercase tracking-wider block mb-2">CONFLICT PROTOCOL</span>
+                                <p class="text-sm font-bold text-white mb-2">보호와 구속의 경계 붕괴</p>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    주인공을 보호한다는 명목과 주인공을 통제하려는 욕구의 경계가 흐려질 수 있음. 극단적인 경우 감금까지 이어질 가능성이 기록되어 있음.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Abandoned interest -->
+                        <div class="bg-jsdark-800/60 p-4 rounded-xl border border-jsblue-500/10">
+                            <span class="text-xs text-jsblue-400 font-bold uppercase tracking-wider block mb-2">UNLISTED PERSONAL HISTORY</span>
                             <p class="text-xs text-slate-300 leading-relaxed">
-                                집무실 깊은 곳에 일반인 출입이 금지된 아날로그 오디오 감상실이 존재함. 클래식 음악과 희귀 본 서적 수집이 유일한 스트레스 해소법이며, 타인에게 절대 약점을 보이지 않으려는 강박적 성향의 기원에는 과거 가족사 내부의 암투가 연관되어 있다는 소문이 있음.
+                                중학교 3학년에서 고등학교 1학년으로 넘어가던 시기에 연극과 노래에 잠시 관심을 보였으며, 소속사 진입을 알아본 흔적이 존재함. 그러나 자신의 지위와 통제적인 성향이 드러날 가능성을 의식한 듯 곧바로 중단. 현재도 간간이 관련 콘텐츠를 접하는 것으로 추정됨.
                             </p>
                         </div>
+
+                        <!-- Confidential footer -->
+                        <div class="border-t border-rose-500/20 pt-4 flex flex-wrap items-center justify-between gap-2">
+                            <span class="text-[10px] text-rose-400 font-mono">ACCESS GRANTED // SUBJECT PROFILE DECRYPTED</span>
+                            <span class="text-[10px] text-slate-500 font-mono">DO NOT DISTRIBUTE // INTERNAL ONLY</span>
+                        </div>
                     </div>
-                </div>
 
                 <!-- Footer status inside card -->
                 <div class="pt-6 mt-6 border-t border-jsblue-500/20 flex items-center justify-between text-xs text-slate-400">
@@ -539,13 +647,25 @@
             });
         }
 
-        // Secret Tab Unlock Function
+        // Secret Tab Password Unlock
+        const SECRET_PASSWORD = '0000';
+
         function unlockSecret() {
+            const input = document.getElementById('secret-password');
+            const error = document.getElementById('secret-error');
             const lockScreen = document.getElementById('secret-lock-screen');
             const contentScreen = document.getElementById('secret-content-screen');
-            
-            lockScreen.innerHTML = '<div class="text-jsblue-neon font-mono text-sm animate-pulse"><i class="fa-solid fa-circle-notch fa-spin mr-2"></i> 바이오메트릭 인증 승인 중...</div>';
-            
+
+            if (input.value !== SECRET_PASSWORD) {
+                error.classList.remove('hidden');
+                input.value = '';
+                input.focus();
+                return;
+            }
+
+            error.classList.add('hidden');
+            lockScreen.innerHTML = '<div class="text-jsblue-neon font-mono text-sm animate-pulse"><i class="fa-solid fa-circle-notch fa-spin mr-2"></i> 보안 패스코드 인증 승인 중...</div>';
+
             setTimeout(() => {
                 lockScreen.classList.add('hidden');
                 contentScreen.classList.remove('hidden');
